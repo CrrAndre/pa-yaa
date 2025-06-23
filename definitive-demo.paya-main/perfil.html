@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil Profesional | Pa'ya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #007bff;
+      --shadow: 0 4px 16px rgba(0,0,0,0.07);
+      --radius: 1.2rem;
+      --gray: #f8f9fa;
+      --text: #222;
+      --transition: 0.2s cubic-bezier(.4,0,.2,1);
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+      background: #fff;
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      background: #fff;
+      box-shadow: var(--shadow);
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color var(--transition);
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width var(--transition);
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+    }
+    nav a:hover, nav a:focus {
+      color: var(--primary);
+    }
+    nav a:hover::after, nav a:focus::after {
+      width: 100%;
+    }
+    .profile-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2.5rem auto 2rem auto;
+      background: var(--gray);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+      max-width: 600px;
+      width: 100%;
+      animation: fadeInUp 1s cubic-bezier(.4,0,.2,1);
+    }
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 16px #007bff22;
+      margin-bottom: 1.2rem;
+      border: 4px solid #fff;
+    }
+    .profile-name {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+    .profile-rating {
+      color: #ffce00;
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+    .profile-info {
+      color: #555;
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+    }
+    .profile-section {
+      width: 100%;
+      margin-bottom: 1.5rem;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1rem 1rem 1rem;
+    }
+    .profile-section-title {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+    }
+    .profile-desc {
+      color: #333;
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+    }
+    .profile-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 0.7rem;
+    }
+    .service-tag {
+      background: #e6f0ff;
+      color: var(--primary);
+      border-radius: 1em;
+      padding: 0.3em 1em;
+      font-size: 0.98rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px #007bff11;
+    }
+    .profile-experience {
+      color: #444;
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+    }
+    .profile-opinions {
+      margin-top: 0.7rem;
+    }
+    .opinion {
+      background: #f8f9fa;
+      border-radius: 1em;
+      padding: 0.7em 1em;
+      margin-bottom: 0.5em;
+      font-size: 0.98rem;
+      color: #333;
+      box-shadow: 0 2px 8px #007bff08;
+    }
+    .contact-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.9rem 2.2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,123,255,0.10);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      outline: none;
+      margin-top: 1.2rem;
+    }
+    .contact-btn:hover, .contact-btn:focus {
+      background: #0056b3;
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(0,123,255,0.13);
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 700px) {
+      .profile-main {
+        padding: 1.2rem 0.2rem 1.2rem 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Pa'ya</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#proveedores">Proveedores</a></li>
+          <li><a href="index.html#como-funciona">Cómo Funciona</a></li>
+          <li><a href="index.html#testimonios">Testimonios</a></li>
+          <li><a href="index.html#app">Descarga la App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="profile-main" id="profile-main">
+      <img src="" alt="Foto del profesional" class="profile-photo" id="profile-photo">
+      <div class="profile-name" id="profile-name">Nombre Profesional</div>
+      <div class="profile-rating" id="profile-rating">★★★★★</div>
+      <div class="profile-info" id="profile-info">Edad | Ubicación</div>
+      <div class="profile-section">
+        <div class="profile-section-title">Descripción</div>
+        <div class="profile-desc" id="profile-desc">Descripción del profesional...</div>
+      </div>
+      <div class="profile-section">
+        <div class="profile-section-title">Servicios ofrecidos</div>
+        <div class="profile-services" id="profile-services">
+          <!-- Etiquetas de servicios -->
+        </div>
+      </div>
+      <div class="profile-section">
+        <div class="profile-section-title">Experiencia</div>
+        <div class="profile-experience" id="profile-experience">Años de experiencia y detalles...</div>
+      </div>
+      <div class="profile-section">
+        <div class="profile-section-title">Opiniones</div>
+        <div class="profile-opinions" id="profile-opinions">
+          <!-- Opiniones simuladas -->
+        </div>
+        <button class="contact-btn" id="ver-testimonios-btn" style="background:#fff;color:var(--primary);border:2px solid var(--primary);margin-top:1.2rem;">Ver todos los testimonios</button>
+      </div>
+      <button class="contact-btn" id="contact-btn">Contactar</button>
+    </div>
+  </main>
+  <script>
+    // Cargar datos del profesional desde localStorage (o fallback a datos simulados)
+    let profesional = null;
+    try {
+      profesional = JSON.parse(localStorage.getItem('perfilProfesional'));
+    } catch (e) { profesional = null; }
+    if (!profesional) {
+      // Fallback a datos simulados
+      profesional = {
+        nombre: 'María López',
+        edad: 32,
+        calificacion: 4.8,
+        descripcion: 'Especialista en maquillaje y peinados para eventos. Más de 10 años de experiencia en el sector de la belleza.',
+        ubicacion: 'CDMX',
+        foto: 'https://randomuser.me/api/portraits/women/44.jpg',
+        servicios: ['Maquillaje', 'Peinados', 'Asesoría de imagen'],
+        experiencia: 'He trabajado en más de 200 eventos sociales y colaborado con reconocidas marcas de cosméticos.',
+        opiniones: [
+          { usuario: 'Ana G.', texto: '¡Excelente trabajo! Me encantó el maquillaje para mi boda.' },
+          { usuario: 'Sofía L.', texto: 'Muy profesional y puntual. 100% recomendada.' }
+        ]
+      };
+    }
+    // Mostrar datos en la página
+    document.getElementById('profile-photo').src = profesional.foto;
+    document.getElementById('profile-name').textContent = profesional.nombre;
+    document.getElementById('profile-rating').textContent = '★'.repeat(Math.round(profesional.calificacion)) + ` (${profesional.calificacion})`;
+    document.getElementById('profile-info').textContent = `${profesional.edad} años | ${profesional.ubicacion}`;
+    document.getElementById('profile-desc').textContent = profesional.descripcion;
+    // Servicios
+    const servicesDiv = document.getElementById('profile-services');
+    servicesDiv.innerHTML = '';
+    profesional.servicios.forEach(serv => {
+      const tag = document.createElement('span');
+      tag.className = 'service-tag';
+      tag.textContent = serv;
+      servicesDiv.appendChild(tag);
+    });
+    // Experiencia
+    document.getElementById('profile-experience').textContent = profesional.experiencia;
+    // Opiniones
+    const opinionsDiv = document.getElementById('profile-opinions');
+    opinionsDiv.innerHTML = '';
+    profesional.opiniones.forEach(op => {
+      const opDiv = document.createElement('div');
+      opDiv.className = 'opinion';
+      opDiv.innerHTML = `<strong>${op.usuario}:</strong> ${op.texto}`;
+      opinionsDiv.appendChild(opDiv);
+    });
+    // Botón de contacto
+    document.getElementById('contact-btn').addEventListener('click', function() {
+      alert('Funcionalidad de contacto próximamente.');
+    });
+    // Botón ver testimonios
+    document.getElementById('ver-testimonios-btn').addEventListener('click', function() {
+      window.location.href = 'testimonios.html';
+    });
+  </script>
+</body>
+</html>

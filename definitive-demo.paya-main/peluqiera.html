@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peluquería - Pa'ya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #007bff; --shadow: 0 4px 16px rgba(0,0,0,0.07); --radius: 1.2rem; --gray: #f8f9fa; --text: #222; --transition: 0.2s cubic-bezier(.4,0,.2,1); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Poppins', 'Montserrat', Arial, sans-serif; background: #fff; color: var(--text); min-height: 100vh; }
+    header { background: #fff; box-shadow: var(--shadow); padding: 0.5rem 0; position: sticky; top: 0; z-index: 10; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 2rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; user-select: none; display: inline-flex; align-items: center; gap: 0.4em; }
+    nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 1rem; transition: color var(--transition); position: relative; }
+    nav a:hover, nav a:focus { color: var(--primary); }
+    nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--primary); transition: width var(--transition); position: absolute; left: 0; bottom: -4px; }
+    nav a:hover::after, nav a:focus::after { width: 100%; }
+    main { padding: 2rem 0; }
+    .profiles-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .profile-card {
+      background: var(--gray);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .profile-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-top: 1.2rem;
+      margin-bottom: 0.7rem;
+      border: 3px solid var(--primary);
+      box-shadow: 0 2px 8px #007bff22;
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .profile-info {
+      padding: 0 1.2rem 1.2rem 1.2rem;
+      width: 100%;
+      text-align: left;
+    }
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.2rem;
+      flex-wrap: wrap;
+    }
+    .profile-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .profile-rating {
+      font-size: 1rem;
+      color: #f39c12;
+    }
+    .profile-age {
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .profile-desc {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 1.2rem;
+    }
+    .profile-actions {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .profile-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .profile-btn:hover, .profile-btn:focus {
+      background: #0056b3;
+      transform: translateY(-2px) scale(1.03);
+    }
+    @media (max-width: 600px) {
+      .profiles-list {
+        grid-template-columns: 1fr;
+      }
+      .profile-info {
+        padding: 0 1rem 1rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Pa'ya <span style="font-size:1.2em;">💇‍♂️</span></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Proveedores</a></li>
+          <li><a href="#">Cómo Funciona</a></li>
+          <li><a href="#">Testimonios</a></li>
+          <li><a href="#">Descarga la App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="service-header">
+        <h1>Perfiles de peluquería</h1>
+        <a href="index.html" style="color:#007bff;text-decoration:underline;font-weight:600;">&larr; Volver al inicio</a>
+      </div>
+      <div class="profiles-list">
+        <!-- Aquí se mostrarán los perfiles de peluquería -->
+      </div>
+    </div>
+  </main>
+</body>
+</html>

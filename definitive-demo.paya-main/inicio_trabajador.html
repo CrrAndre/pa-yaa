@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio Trabajador - Pa'ya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #007bff; --shadow: 0 4px 16px rgba(0,0,0,0.07); --radius: 1.2rem; --gray: #f8f9fa; --text: #222; --transition: 0.2s cubic-bezier(.4,0,.2,1); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Poppins', 'Montserrat', Arial, sans-serif; background: #fff; color: var(--text); min-height: 100vh; }
+    header { background: #fff; box-shadow: var(--shadow); padding: 0.5rem 0; position: sticky; top: 0; z-index: 10; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 2rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; user-select: none; display: inline-flex; align-items: center; gap: 0.4em; }
+    nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 1rem; transition: color var(--transition); position: relative; }
+    nav a:hover, nav a:focus { color: var(--primary); }
+    nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--primary); transition: width var(--transition); position: absolute; left: 0; bottom: -4px; }
+    nav a:hover::after, nav a:focus::after { width: 100%; }
+    main { padding: 2rem 0; }
+    .profiles-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .profile-card {
+      background: var(--gray);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .profile-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-top: 1.2rem;
+      margin-bottom: 0.7rem;
+      border: 3px solid var(--primary);
+      box-shadow: 0 2px 8px #007bff22;
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .profile-info {
+      padding: 0 1.2rem 1.2rem 1.2rem;
+      width: 100%;
+      text-align: left;
+    }
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.2rem;
+      flex-wrap: wrap;
+    }
+    .profile-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .profile-rating {
+      font-size: 1rem;
+      color: #f39c12;
+    }
+    .profile-age {
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .profile-desc {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 1.2rem;
+    }
+    .profile-actions {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .profile-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .profile-btn:hover, .profile-btn:focus {
+      background: #0056b3;
+      transform: translateY(-2px) scale(1.03);
+    }
+    @media (max-width: 600px) {
+      .profiles-list {
+        grid-template-columns: 1fr;
+      }
+      .profile-info {
+        padding: 0 1rem 1rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Página en blanco para inicio (trabajador) -->
+  <main>
+    <div class="container">
+      <div id="card-proveedor" style="background:#fff;border-radius:1.2rem;box-shadow:0 4px 16px rgba(0,0,0,0.07);padding:2.5rem 2rem;text-align:center;max-width:320px;margin:2rem auto;cursor:pointer;transition:box-shadow 0.2s;">
+        <div style="font-size:3.5rem;margin-bottom:1rem;">🧑‍🔧</div>
+        <div style="font-size:1.2rem;font-weight:700;margin-bottom:0.7rem;">¿Eres proveedor?</div>
+        <div style="color:#444;font-size:1.1rem;">Regístrate y ofrece tus servicios a miles de usuarios.</div>
+      </div>
+      <div id="card-trabajador" style="background:#fff;border-radius:1.2rem;box-shadow:0 4px 16px rgba(0,0,0,0.07);padding:2.5rem 2rem;text-align:center;max-width:320px;margin:2rem auto;cursor:pointer;transition:box-shadow 0.2s;">
+        <div style="font-size:3.5rem;margin-bottom:1rem;">👷‍♂️</div>
+        <div style="font-size:1.2rem;font-weight:700;margin-bottom:0.7rem;">¿Eres trabajador?</div>
+        <div style="color:#444;font-size:1.1rem;">¿Quieres ofrecer tus servicios? Haz clic aquí.</div>
+      </div>
+    </div>
+    <div id="modal-trabajador" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.18);z-index:1000;align-items:center;justify-content:center;">
+      <div style="background:#fff;border-radius:1.2rem;box-shadow:0 4px 16px rgba(0,0,0,0.13);padding:2.5rem 2rem;max-width:350px;width:90vw;position:relative;text-align:center;animation:fadeInUp 0.4s;">
+        <span id="close-modal-trabajador" style="position:absolute;top:1rem;right:1.2rem;font-size:2rem;color:#bbb;cursor:pointer;">&times;</span>
+        <div id="modal-tabs" style="display:flex;justify-content:center;gap:1.2rem;margin-bottom:1.5rem;">
+          <button id="btn-iniciar" class="tab-btn active" style="background:#f8f9fa;border:none;border-radius:1.2rem;padding:0.7rem 1.5rem;font-size:1rem;font-weight:600;color:#007bff;cursor:pointer;">Iniciar sesión</button>
+          <button id="btn-registrar" class="tab-btn" style="background:#f8f9fa;border:none;border-radius:1.2rem;padding:0.7rem 1.5rem;font-size:1rem;font-weight:600;color:#007bff;cursor:pointer;">Registrarse</button>
+        </div>
+        <div id="tab-iniciar" class="tab-content" style="display:block;">
+          <h2 style="color:#007bff;margin-bottom:1rem;">Iniciar sesión</h2>
+          <input type="email" placeholder="Correo electrónico" style="width:100%;padding:0.7rem;margin-bottom:1rem;border-radius:0.7rem;border:1px solid #ddd;">
+          <input type="password" placeholder="Contraseña" style="width:100%;padding:0.7rem;margin-bottom:1rem;border-radius:0.7rem;border:1px solid #ddd;">
+          <button style="background:#007bff;color:#fff;border:none;border-radius:1.2rem;padding:0.7rem 1.5rem;font-size:1rem;font-weight:600;cursor:pointer;width:100%;">Entrar</button>
+        </div>
+        <div id="tab-registrar" class="tab-content" style="display:none;">
+          <h2 style="color:#007bff;margin-bottom:1rem;">Registro paso a paso</h2>
+          <div id="registro-pasos">
+            <div class="paso" id="paso-1">
+              <p><b>Paso 1:</b> Ingresa tu nombre completo</p>
+              <input type="text" placeholder="Nombre completo" style="width:100%;padding:0.7rem;margin-bottom:1rem;border-radius:0.7rem;border:1px solid #ddd;">
+              <button class="btn-siguiente" style="background:#007bff;color:#fff;border:none;border-radius:1.2rem;padding:0.7rem 1.5rem;font-size:1rem;font-weight:600;cursor:pointer;width:100%;">Siguiente</button>
+            </div>
+            <div class="paso" id="paso-2" style="display:none;">
+              <p><b>Paso 2:</b> Ingresa tu correo electrónico</p>
+              <input type="email" placeholder="Correo electrónico" style="width:100%;padding:0.7rem;margin-bottom:1rem;border-radius:0.7rem;border:1px solid #ddd;">
+              <button class="btn-siguiente" style="background:#007bff;color:#fff;border:none;border-radius:1.2rem;padding:0.7rem 1.5rem;font-size:1rem;font-weight:600;cursor:pointer;width:100%;">Siguiente</button>
+            </div>
+            <div class="paso" id="paso-3" style="display:none;">
+              <p><b>Paso 3:</b> Crea una contraseña</p>
+              <input type="password" placeholder="Contraseña" style="width:100%;padding:0.7rem;margin-bottom:1rem;border-radius:0.7rem;border:1px solid #ddd;">
+              <button class="btn-siguiente" style="background:#007bff;color:#fff;border:none;border-radius:1.2rem;padding:0.7rem 1.5rem;font-size:1rem;font-weight:600;cursor:pointer;width:100%;">Siguiente</button>
+            </div>
+            <div class="paso" id="paso-4" style="display:none;">
+              <p><b>Paso 4:</b> ¡Registro completado!</p>
+              <button style="background:#28a745;color:#fff;border:none;border-radius:1.2rem;padding:0.7rem 1.5rem;font-size:1rem;font-weight:600;cursor:pointer;width:100%;">Finalizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>@keyframes fadeInUp{from{opacity:0;transform:translate3d(0,40px,0);}to{opacity:1;transform:none;}}</style>
+    <script>
+      // Modal trabajador
+      document.getElementById('card-trabajador').onclick = function() {
+        document.getElementById('modal-trabajador').style.display = 'flex';
+      };
+      document.getElementById('close-modal-trabajador').onclick = function() {
+        document.getElementById('modal-trabajador').style.display = 'none';
+      };
+      // Tabs
+      document.getElementById('btn-iniciar').onclick = function() {
+        this.classList.add('active');
+        document.getElementById('btn-registrar').classList.remove('active');
+        document.getElementById('tab-iniciar').style.display = 'block';
+        document.getElementById('tab-registrar').style.display = 'none';
+      };
+      document.getElementById('btn-registrar').onclick = function() {
+        this.classList.add('active');
+        document.getElementById('btn-iniciar').classList.remove('active');
+        document.getElementById('tab-iniciar').style.display = 'none';
+        document.getElementById('tab-registrar').style.display = 'block';
+      };
+      // Registro paso a paso
+      let paso = 1;
+      const totalPasos = 4;
+      document.querySelectorAll('#tab-registrar .btn-siguiente').forEach((btn, idx) => {
+        btn.onclick = function() {
+          document.getElementById('paso-' + paso).style.display = 'none';
+          paso++;
+          if (paso <= totalPasos) {
+            document.getElementById('paso-' + paso).style.display = 'block';
+          } else {
+            document.getElementById('modal-trabajador').style.display = 'none';
+            paso = 1;
+            document.getElementById('paso-1').style.display = 'block';
+            document.getElementById('paso-2').style.display = 'none';
+            document.getElementById('paso-3').style.display = 'none';
+            document.getElementById('paso-4').style.display = 'none';
+          }
+        };
+      });
+    </script>
+  </main>
+</body>
+</html>

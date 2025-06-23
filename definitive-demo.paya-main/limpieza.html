@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limpieza - Pa'ya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #007bff; --shadow: 0 4px 16px rgba(0,0,0,0.07); --radius: 1.2rem; --gray: #f8f9fa; --text: #222; --transition: 0.2s cubic-bezier(.4,0,.2,1); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Poppins', 'Montserrat', Arial, sans-serif; background: #fff; color: var(--text); min-height: 100vh; }
+    header { background: #fff; box-shadow: var(--shadow); padding: 0.5rem 0; position: sticky; top: 0; z-index: 10; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 2rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; user-select: none; display: inline-flex; align-items: center; gap: 0.4em; }
+    nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 1rem; transition: color var(--transition); position: relative; }
+    nav a:hover, nav a:focus { color: var(--primary); }
+    nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--primary); transition: width var(--transition); position: absolute; left: 0; bottom: -4px; }
+    nav a:hover::after, nav a:focus::after { width: 100%; }
+    main { padding: 2rem 0; }
+    .service-header { max-width: 700px; margin: 2rem auto 0 auto; text-align: center; }
+    .service-header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 1rem; }
+    .profiles-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .profile-card {
+      background: var(--gray);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .profile-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-top: 1.2rem;
+      margin-bottom: 0.7rem;
+      border: 3px solid var(--primary);
+      box-shadow: 0 2px 8px #007bff22;
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .profile-info {
+      padding: 0 1.2rem 1.2rem 1.2rem;
+      width: 100%;
+      text-align: left;
+    }
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.2rem;
+      flex-wrap: wrap;
+    }
+    .profile-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .profile-rating {
+      font-size: 1rem;
+      color: #f39c12;
+    }
+    .profile-age {
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .profile-desc {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 1.2rem;
+    }
+    .profile-actions {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .profile-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .profile-btn:hover, .profile-btn:focus {
+      background: #0056b3;
+      transform: translateY(-2px) scale(1.03);
+    }
+    @media (max-width: 600px) {
+      .profiles-list {
+        grid-template-columns: 1fr;
+      }
+      .profile-info {
+        padding: 0 1rem 1rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Pa'ya <span style="font-size:1.2em;">🧹</span></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Proveedores</a></li>
+          <li><a href="#">Cómo Funciona</a></li>
+          <li><a href="#">Testimonios</a></li>
+          <li><a href="#">Descarga la App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="service-header">
+        <h1>Expertos en limpieza mejor calificados</h1>
+        <a href="index.html" style="color:#007bff;text-decoration:underline;font-weight:600;">&larr; Volver al inicio</a>
+      </div>
+      <div class="profiles-list">
+        <div class="profile-card">
+          <div class="profile-avatar"><img src="https://randomuser.me/api/portraits/women/50.jpg" alt="Daniela Paredes"></div>
+          <div class="profile-info">
+            <div class="profile-top">
+              <span class="profile-name">Daniela Paredes</span>
+              <span class="profile-rating">4.7 ★</span>
+              <span class="profile-age">26 años</span>
+            </div>
+            <div class="profile-desc">Limpieza profunda de casas y oficinas. Rápida y confiable.</div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-btn" onclick="window.location.href='vista_perfil_trabajador.html'">Ver perfil completo</button>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-avatar"><img src="https://randomuser.me/api/portraits/women/52.jpg" alt="María Fernanda"></div>
+          <div class="profile-info">
+            <div class="profile-top">
+              <span class="profile-name">María Fernanda</span>
+              <span class="profile-rating">4.8 ★</span>
+              <span class="profile-age">35 años</span>
+            </div>
+            <div class="profile-desc">Especialista en limpieza ecológica y desinfección.</div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-btn" onclick="window.location.href='vista_perfil_trabajador.html'">Ver perfil completo</button>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-avatar"><img src="https://randomuser.me/api/portraits/men/63.jpg" alt="Andrés Molina"></div>
+          <div class="profile-info">
+            <div class="profile-top">
+              <span class="profile-name">Andrés Molina</span>
+              <span class="profile-rating">4.5 ★</span>
+              <span class="profile-age">32 años</span>
+            </div>
+            <div class="profile-desc">Limpieza de oficinas y espacios comerciales.</div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-btn" onclick="window.location.href='vista_perfil_trabajador.html'">Ver perfil completo</button>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-avatar"><img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Carlos Méndez"></div>
+          <div class="profile-info">
+            <div class="profile-top">
+              <span class="profile-name">Carlos Méndez</span>
+              <span class="profile-rating">4.6 ★</span>
+              <span class="profile-age">41 años</span>
+            </div>
+            <div class="profile-desc">Limpieza de alfombras y tapicería profesional.</div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-btn" onclick="window.location.href='vista_perfil_trabajador.html'">Ver perfil completo</button>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-avatar"><img src="https://randomuser.me/api/portraits/women/71.jpg" alt="Sandra López"></div>
+          <div class="profile-info">
+            <div class="profile-top">
+              <span class="profile-name">Sandra López</span>
+              <span class="profile-rating">4.9 ★</span>
+              <span class="profile-age">38 años</span>
+            </div>
+            <div class="profile-desc">Limpieza ecológica y desinfección de espacios grandes.</div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-btn" onclick="window.location.href='vista_perfil_trabajador.html'">Ver perfil completo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    // Obtener todos los botones de perfil
+    const botonesPerfil = document.querySelectorAll('.profile-btn');
+    botonesPerfil.forEach(btn => {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        // Buscar el card más cercano
+        const card = btn.closest('.profile-card');
+        // Obtener datos del perfil
+        const nombre = card.querySelector('.profile-name')?.textContent || '';
+        const edad = card.querySelector('.profile-age')?.textContent || '';
+        const rating = card.querySelector('.profile-rating')?.textContent || '';
+        const desc = card.querySelector('.profile-desc')?.textContent || '';
+        const avatar = card.querySelector('.profile-avatar img')?.src || '';
+        // Datos personalizados por trabajador
+        let perfilExtra = {};
+        if (nombre.includes('Daniela Paredes')) {
+          perfilExtra = {
+            especialidades: ['Limpieza profunda', 'Casas y oficinas'],
+            experiencia: '5 años de experiencia',
+            ubicacion: 'CDMX, México',
+            contacto: { telefono: '+52 55 1234 5678', email: 'daniela.paredes@paya.com' },
+            redes: [
+              { nombre: 'Facebook', url: '#', icon: '🔵' }
+            ],
+            valoraciones: [
+              { usuario: 'María L.', comentario: 'Dejó mi casa impecable.', rating: 5 },
+              { usuario: 'José R.', comentario: 'Muy rápida y confiable.', rating: 5 }
+            ]
+          };
+        } else if (nombre.includes('María Fernanda')) {
+          perfilExtra = {
+            especialidades: ['Limpieza ecológica', 'Desinfección'],
+            experiencia: '7 años en limpieza profesional',
+            ubicacion: 'Naucalpan, Estado de México',
+            contacto: { telefono: '+52 55 2345 6789', email: 'maria.fernanda@paya.com' },
+            redes: [
+              { nombre: 'Instagram', url: '#', icon: '🟣' }
+            ],
+            valoraciones: [
+              { usuario: 'Ana P.', comentario: 'Me encantó el servicio ecológico.', rating: 5 },
+              { usuario: 'Luis G.', comentario: 'Muy profesional.', rating: 4 }
+            ]
+          };
+        } else if (nombre.includes('Andrés Molina')) {
+          perfilExtra = {
+            especialidades: ['Limpieza de oficinas', 'Espacios comerciales'],
+            experiencia: '4 años en limpieza empresarial',
+            ubicacion: 'CDMX, México',
+            contacto: { telefono: '+52 55 3456 7890', email: 'andres.molina@paya.com' },
+            redes: [
+              { nombre: 'WhatsApp', url: '#', icon: '🟢' }
+            ],
+            valoraciones: [
+              { usuario: 'Carlos M.', comentario: 'Oficina limpia y lista siempre.', rating: 5 }
+            ]
+          };
+        } else if (nombre.includes('Carlos Méndez')) {
+          perfilExtra = {
+            especialidades: ['Limpieza de alfombras', 'Tapicería'],
+            experiencia: '10 años de experiencia',
+            ubicacion: 'Ecatepec, Estado de México',
+            contacto: { telefono: '+52 55 4567 8901', email: 'carlos.mendez@paya.com' },
+            redes: [
+              { nombre: 'Facebook', url: '#', icon: '🔵' }
+            ],
+            valoraciones: [
+              { usuario: 'Patricia H.', comentario: 'Mi sala quedó como nueva.', rating: 5 }
+            ]
+          };
+        } else if (nombre.includes('Sandra López')) {
+          perfilExtra = {
+            especialidades: ['Limpieza ecológica', 'Desinfección de espacios grandes'],
+            experiencia: '8 años de experiencia',
+            ubicacion: 'CDMX, México',
+            contacto: { telefono: '+52 55 5678 9012', email: 'sandra.lopez@paya.com' },
+            redes: [
+              { nombre: 'Instagram', url: '#', icon: '🟣' }
+            ],
+            valoraciones: [
+              { usuario: 'Miguel A.', comentario: 'Excelente para eventos grandes.', rating: 5 }
+            ]
+          };
+        }
+        // Guardar en localStorage
+        localStorage.setItem('perfil_trabajador', JSON.stringify({nombre, edad, rating, desc, avatar, ...perfilExtra}));
+        window.location.href = 'vista_perfil_trabajador.html';
+      };
+    });
+    </script>
+</body>
+</html>

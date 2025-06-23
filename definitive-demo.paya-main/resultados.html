@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados de búsqueda - Pa'ya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #007bff;
+      --primary-hover: #0056b3;
+      --background: #f8f9fa;
+      --white: #fff;
+      --text: #222;
+    }
+    body { font-family: 'Poppins', 'Montserrat', Arial, sans-serif; background: var(--background); margin: 0; }
+    header { background: var(--white); box-shadow: 0 4px 16px rgba(0,0,0,0.07); padding: 0.5rem 0; position: sticky; top: 0; z-index: 10; }
+    .container { width: 90%; max-width: 1000px; margin: 2rem auto; background: var(--white); border-radius: 1.2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.07); padding: 2rem; }
+    h1 { color: var(--primary); margin-bottom: 0.5em; }
+    .results-title { font-size: 1.3rem; color: #222; margin-bottom: 1.5rem; }
+    .profiles { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+    .profile-card { background: #f8f9fa; border-radius: 1rem; box-shadow: 0 2px 8px #007bff11; padding: 1.5rem 1.2rem; max-width: 260px; min-width: 200px; flex: 1 1 200px; display: flex; flex-direction: column; align-items: center; }
+    .profile-avatar { width: 70px; height: 70px; border-radius: 50%; background: #e6f0ff; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin-bottom: 0.7rem; overflow: hidden; }
+    .profile-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .profile-name { font-weight: 600; color: #007bff; margin-bottom: 0.2rem; }
+    .profile-age { color: #555; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .profile-rating { color: #ffce00; font-size: 1.1rem; margin-bottom: 0.2rem; }
+    .profile-desc { color: #444; font-size: 0.98rem; text-align: center; margin-bottom: 0.7rem; }
+    .profile-location { color: #007bff; font-size: 0.95rem; margin-bottom: 0.7rem; }
+    .profile-btn { background: #007bff; color: #fff; border: none; border-radius: 1rem; padding: 0.6rem 1.5rem; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 0.5rem; transition: background 0.2s; }
+    .profile-btn:hover { background: #0056b3; }
+    .back-link { display: inline-block; margin-top: 2rem; color: #007bff; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .back-link:hover { color: #0056b3; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .logo { font-size: 2rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; text-shadow: 0 2px 8px rgba(0,123,255,0.08); user-select: none; display: inline-flex; align-items: center; gap: 0.4em; position: relative; }
+    .logo-icon { display: inline-flex; align-items: center; margin-left: 0.1em; transition: transform 0.2s; }
+    .logo-snap svg { height: 1.5em; width: 1.5em; display: inline-block; }
+    nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 1rem; transition: color 0.2s; position: relative; }
+    nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--primary); transition: width 0.2s; position: absolute; left: 0; bottom: -4px; }
+    nav a:hover, nav a:focus { color: var(--primary); }
+    nav a:hover::after, nav a:focus::after { width: 100%; }
+    @media (max-width: 700px) { .container { padding: 1rem; } .profiles { flex-direction: column; align-items: center; } .nav { flex-direction: column; align-items: stretch; gap: 0.5rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Pa'ya <span class="logo-icon logo-snap">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <path d="M10 19c1.5-2 4.5-2 6 0l2 3c1 1.5 3.5 1.5 4.5 0.5c1-1-0.5-2.5-1.5-2l-2.5 1.5" stroke="#007bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 19l-1.5-2.5c-0.5-1-2-1-2.5 0c-0.5 1 0.5 2 1.5 2.5" stroke="#007bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 22c0.5 1.5 2.5 2 3.5 1" stroke="#007bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="snap-fingers" d="M22 10l2-2" stroke="#ffce00" stroke-width="2" stroke-linecap="round"/>
+            <path class="snap-fingers" d="M24 13l3-1" stroke="#ffce00" stroke-width="2" stroke-linecap="round"/>
+            <path class="snap-fingers" d="M20 7l1-3" stroke="#ffce00" stroke-width="2" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </span></div>
+      <nav>
+        <ul>
+          <li><a href="index.html" id="inicio-link">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proveedores">Proveedores</a></li>
+          <li><a href="#como-funciona">Cómo Funciona</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#app">Descarga la App</a></li>
+        </ul>
+      </nav>
+    </div>
+    <h1>Resultados de búsqueda</h1>
+  </header>
+  <div class="container">
+    <div class="results-title" id="results-title"></div>
+    <div class="profiles" id="profiles-list"></div>
+    <a href="index.html" class="back-link">&larr; Volver al inicio</a>
+  </div>
+  <script>
+    // Datos simulados de profesionales (con imágenes)
+    const profesionales = [
+      { nombre: 'Andrea Martínez', edad: 29, calificacion: 4.8, descripcion: 'Especialista en cortes y coloración. Atención a domicilio.', ubicacion: 'medellin', servicio: 'peluqueria', avatar: 'https://randomuser.me/api/portraits/women/44.jpg' },
+      { nombre: 'Miguel Ángel', edad: 34, calificacion: 4.6, descripcion: 'Barbero y estilista masculino. Servicio personalizado.', ubicacion: 'medellin', servicio: 'barbero', avatar: 'https://randomuser.me/api/portraits/men/32.jpg' },
+      { nombre: 'Rosa Hernández', edad: 41, calificacion: 4.9, descripcion: 'Peluquera con más de 15 años de experiencia.', ubicacion: 'bogota', servicio: 'peluqueria', avatar: 'https://randomuser.me/api/portraits/women/65.jpg' },
+      { nombre: 'Pedro Sánchez', edad: 27, calificacion: 4.7, descripcion: 'Cortes modernos y clásicos. Atención en Medellín.', ubicacion: 'medellin', servicio: 'estilista', avatar: 'https://randomuser.me/api/portraits/men/45.jpg' },
+      { nombre: 'Laura Jiménez', edad: 31, calificacion: 4.5, descripcion: 'Especialista en peinados y maquillaje.', ubicacion: 'medellin', servicio: 'peluqueria', avatar: 'https://randomuser.me/api/portraits/women/68.jpg' },
+      { nombre: 'Carlos Ramírez', edad: 38, calificacion: 4.4, descripcion: 'Barbero profesional. Citas a domicilio.', ubicacion: 'medellin', servicio: 'barbero', avatar: 'https://randomuser.me/api/portraits/men/41.jpg' },
+      { nombre: 'Sofía López', edad: 25, calificacion: 4.7, descripcion: 'Estilista experta en balayage y tendencias modernas.', ubicacion: 'medellin', servicio: 'estilista', avatar: 'https://randomuser.me/api/portraits/women/12.jpg' },
+      { nombre: 'Javier Torres', edad: 36, calificacion: 4.8, descripcion: 'Barbero clásico y moderno. Atención en toda la ciudad.', ubicacion: 'medellin', servicio: 'barbero', avatar: 'https://randomuser.me/api/portraits/men/12.jpg' },
+      { nombre: 'Mariana Ruiz', edad: 30, calificacion: 4.9, descripcion: 'Peluquera y colorista. Resultados garantizados.', ubicacion: 'medellin', servicio: 'peluqueria', avatar: 'https://randomuser.me/api/portraits/women/22.jpg' },
+      { nombre: 'Esteban Gómez', edad: 28, calificacion: 4.6, descripcion: 'Cortes de cabello y barba a domicilio.', ubicacion: 'bogota', servicio: 'barbero', avatar: 'https://randomuser.me/api/portraits/men/22.jpg' },
+      { nombre: 'Valentina Castro', edad: 32, calificacion: 4.8, descripcion: 'Especialista en peinados para eventos.', ubicacion: 'medellin', servicio: 'estilista', avatar: 'https://randomuser.me/api/portraits/women/33.jpg' },
+      { nombre: 'Camilo Herrera', edad: 40, calificacion: 4.5, descripcion: 'Barbero y estilista con más de 20 años de experiencia.', ubicacion: 'medellin', servicio: 'barbero', avatar: 'https://randomuser.me/api/portraits/men/33.jpg' },
+      // Belleza y maquillaje
+      { nombre: 'Paula Restrepo', edad: 28, calificacion: 4.9, descripcion: 'Maquilladora profesional para eventos y novias.', ubicacion: 'medellin', servicio: 'maquillaje', avatar: 'https://randomuser.me/api/portraits/women/23.jpg' },
+      { nombre: 'Natalia Gómez', edad: 35, calificacion: 4.7, descripcion: 'Belleza integral: peinados, maquillaje y uñas.', ubicacion: 'medellin', servicio: 'belleza', avatar: 'https://randomuser.me/api/portraits/women/24.jpg' },
+      { nombre: 'Juliana Cárdenas', edad: 29, calificacion: 4.8, descripcion: 'Especialista en maquillaje social y artístico.', ubicacion: 'bogota', servicio: 'maquillaje', avatar: 'https://randomuser.me/api/portraits/women/25.jpg' },
+      // Mecánica
+      { nombre: 'Oscar Pérez', edad: 42, calificacion: 4.9, descripcion: 'Mecánico automotriz a domicilio. Diagnóstico y reparación.', ubicacion: 'medellin', servicio: 'mecanica', avatar: 'https://randomuser.me/api/portraits/men/55.jpg' },
+      { nombre: 'Luis Torres', edad: 37, calificacion: 4.7, descripcion: 'Especialista en mecánica de motos y autos.', ubicacion: 'medellin', servicio: 'mecanico', avatar: 'https://randomuser.me/api/portraits/men/56.jpg' },
+      { nombre: 'Marta Salazar', edad: 33, calificacion: 4.8, descripcion: 'Mecánica general y eléctrica para tu carro.', ubicacion: 'bogota', servicio: 'mecanica', avatar: 'https://randomuser.me/api/portraits/women/56.jpg' },
+      // Limpieza, reparaciones y tutorías
+      { nombre: 'Daniela Paredes', edad: 26, calificacion: 4.7, descripcion: 'Limpieza profunda de casas y oficinas. Rápida y confiable.', ubicacion: 'medellin', servicio: 'limpieza', avatar: 'https://randomuser.me/api/portraits/women/50.jpg' },
+      { nombre: 'Juan Pablo Ríos', edad: 39, calificacion: 4.8, descripcion: 'Experto en reparaciones del hogar: plomería, electricidad y más.', ubicacion: 'bogota', servicio: 'reparaciones', avatar: 'https://randomuser.me/api/portraits/men/60.jpg' },
+      { nombre: 'Camila Torres', edad: 30, calificacion: 4.9, descripcion: 'Tutorías de matemáticas y física para todos los niveles.', ubicacion: 'medellin', servicio: 'tutorias', avatar: 'https://randomuser.me/api/portraits/women/51.jpg' },
+      { nombre: 'Santiago Vélez', edad: 28, calificacion: 4.6, descripcion: 'Clases de inglés personalizadas y dinámicas.', ubicacion: 'bogota', servicio: 'tutorias', avatar: 'https://randomuser.me/api/portraits/men/61.jpg' },
+      { nombre: 'María Fernanda', edad: 35, calificacion: 4.8, descripcion: 'Especialista en limpieza ecológica y desinfección.', ubicacion: 'medellin', servicio: 'limpieza', avatar: 'https://randomuser.me/api/portraits/women/52.jpg' },
+      { nombre: 'Ricardo Gómez', edad: 45, calificacion: 4.7, descripcion: 'Reparaciones rápidas y garantizadas para el hogar.', ubicacion: 'medellin', servicio: 'reparaciones', avatar: 'https://randomuser.me/api/portraits/men/62.jpg' },
+      { nombre: 'Valeria Quintero', edad: 27, calificacion: 4.9, descripcion: 'Tutorías de química y biología. Resultados comprobados.', ubicacion: 'bogota', servicio: 'tutorias', avatar: 'https://randomuser.me/api/portraits/women/53.jpg' },
+      { nombre: 'Andrés Molina', edad: 32, calificacion: 4.5, descripcion: 'Limpieza de oficinas y espacios comerciales.', ubicacion: 'bogota', servicio: 'limpieza', avatar: 'https://randomuser.me/api/portraits/men/63.jpg' },
+      { nombre: 'Lucía Ramírez', edad: 29, calificacion: 4.8, descripcion: 'Reparaciones eléctricas y de plomería a domicilio.', ubicacion: 'medellin', servicio: 'reparaciones', avatar: 'https://randomuser.me/api/portraits/women/54.jpg' },
+      { nombre: 'Felipe Torres', edad: 36, calificacion: 4.6, descripcion: 'Tutorías de programación y tecnología.', ubicacion: 'medellin', servicio: 'tutorias', avatar: 'https://randomuser.me/api/portraits/men/64.jpg' }
+      // ...puedes agregar más perfiles aquí...
+    ];
+    // Sinónimos para búsqueda
+    const sinonimos = {
+      peluqueria: ['peluqueria', 'peluquera', 'peluquero', 'corte de pelo', 'cortador de pelo', 'estilista', 'barbero', 'salón', 'salon', 'peinados'],
+      barbero: ['barbero', 'barbería', 'barberia', 'afeitado', 'corte de barba'],
+      estilista: ['estilista', 'maquillaje', 'peinados', 'coloración', 'coloracion', 'tinte'],
+      maquillaje: ['maquillaje', 'maquilladora', 'maquillador', 'makeup'],
+      belleza: ['belleza', 'uñas', 'spa', 'manicure', 'pedicure', 'estética', 'estetica'],
+      mecanica: ['mecanica', 'mecánico', 'mecanico', 'carro', 'auto', 'vehículo', 'vehiculo', 'moto', 'mecánica automotriz', 'mecanico para mi carro'],
+      limpieza: ['limpieza', 'limpiador', 'limpiadora', 'aseo', 'desinfección', 'desinfectante'],
+      reparaciones: ['reparaciones', 'reparador', 'reparadora', 'plomería', 'electricidad', 'reparación del hogar'],
+      tutorias: ['tutorías', 'tutor', 'tutora', 'clases particulares', 'ayuda escolar', 'apoyo escolar']
+    };
+    // Obtener parámetros de la URL
+    const params = new URLSearchParams(window.location.search);
+    const busqueda = (params.get('servicio') || '').toLowerCase();
+    const ubicacion = (params.get('ubicacion') || '').toLowerCase();
+    // Determinar el tipo de servicio buscado
+    let servicioDetectado = null;
+    for (const key in sinonimos) {
+      if (sinonimos[key].some(s => busqueda.includes(s))) {
+        servicioDetectado = key;
+        break;
+      }
+    }
+    // Filtrar profesionales
+    let resultados = profesionales.filter(p => {
+      const matchServicio = servicioDetectado ? p.servicio === servicioDetectado : true;
+      const matchUbicacion = ubicacion ? p.ubicacion === ubicacion : true;
+      return matchServicio && matchUbicacion;
+    });
+    // Mostrar resultados
+    const resultsTitle = document.getElementById('results-title');
+    const profilesList = document.getElementById('profiles-list');
+    if (resultados.length === 0) {
+      resultsTitle.textContent = 'No se encontraron profesionales para tu búsqueda.';
+    } else {
+      resultsTitle.textContent = `Mostrando ${resultados.length} profesional(es) para "${busqueda}" en "${ubicacion}"`;
+      resultados.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'profile-card';
+        card.innerHTML = `
+          <div class="profile-avatar"><img src="${p.avatar}" alt="${p.nombre}"></div>
+          <div class="profile-name">${p.nombre}</div>
+          <div class="profile-age">Edad: ${p.edad}</div>
+          <div class="profile-rating">${'★'.repeat(Math.round(p.calificacion))} <span style="color:#868e96;font-size:0.95rem;">(${p.calificacion})</span></div>
+          <div class="profile-desc">${p.descripcion}</div>
+          <div class="profile-location">${p.ubicacion.charAt(0).toUpperCase() + p.ubicacion.slice(1)}</div>
+          <button class="profile-btn" onclick="alert('Perfil completo de ${p.nombre}')">Ver perfil completo</button>
+        `;
+        profilesList.appendChild(card);
+      });
+    }
+    // Menú volver a inicio
+    document.getElementById('inicio-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.replace('index.html');
+    });
+  </script>
+</body>
+</html>

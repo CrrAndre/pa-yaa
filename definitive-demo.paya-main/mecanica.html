@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-widthn   9m , initial-scale=1.0">
+  <title>Mecánica - Pa'ya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #007bff; --shadow: 0 4px 16px rgba(0,0,0,0.07); --radius: 1.2rem; --gray: #f8f9fa; --text: #222; --transition: 0.2s cubic-bezier(.4,0,.2,1); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Poppins', 'Montserrat', Arial, sans-serif; background: #fff; color: var(--text); min-height: 100vh; }
+    header { background: #fff; box-shadow: var(--shadow); padding: 0.5rem 0; position: sticky; top: 0; z-index: 10; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 2rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; user-select: none; display: inline-flex; align-items: center; gap: 0.4em; }
+    nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 1rem; transition: color var(--transition); position: relative; }
+    nav a:hover, nav a:focus { color: var(--primary); }
+    nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--primary); transition: width var(--transition); position: absolute; left: 0; bottom: -4px; }
+    nav a:hover::after, nav a:focus::after { width: 100%; }
+    main { padding: 2rem 0; }
+    .profiles-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .profile-card {
+      background: var(--gray);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .profile-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-top: 1.2rem;
+      margin-bottom: 0.7rem;
+      border: 3px solid var(--primary);
+      box-shadow: 0 2px 8px #007bff22;
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .profile-info {
+      padding: 0 1.2rem 1.2rem 1.2rem;
+      width: 100%;
+      text-align: left;
+    }
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.2rem;
+      flex-wrap: wrap;
+    }
+    .profile-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .profile-rating {
+      font-size: 1rem;
+      color: #f39c12;
+    }
+    .profile-age {
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .profile-desc {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 1.2rem;
+    }
+    .profile-actions {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .profile-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .profile-btn:hover, .profile-btn:focus {
+      background: #0056b3;
+      transform: translateY(-2px) scale(1.03);
+    }
+    @media (max-width: 600px) {
+      .profiles-list {
+        grid-template-columns: 1fr;
+      }
+      .profile-info {
+        padding: 0 1rem 1rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Pa'ya <span style="font-size:1.2em;">🔧</span></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Proveedores</a></li>
+          <li><a href="#">Cómo Funciona</a></li>
+          <li><a href="#">Testimonios</a></li>
+          <li><a href="#">Descarga la App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="service-header">
+        <h1>Perfiles de mecánicos</h1>
+        <a href="index.html" style="color:#007bff;text-decoration:underline;font-weight:600;">&larr; Volver al inicio</a>
+      </div>
+      <div class="profiles-list">
+        <div class="profile-card">
+          <div class="profile-avatar"><img src="https://randomuser.me/api/portraits/men/80.jpg" alt="Raúl Castillo"></div>
+          <div class="profile-info">
+            <div class="profile-top">
+              <span class="profile-name">Raúl Castillo</span>
+              <span class="profile-rating">4.9 ★</span>
+              <span class="profile-age">40 años</span>
+            </div>
+            <div class="profile-desc">Especialista en mecánica automotriz. Diagnóstico y reparación rápida.</div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-btn" onclick="window.location.href='vista_perfil_trabajador.html'">Ver perfil completo</button>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-avatar"><img src="https://randomuser.me/api/portraits/women/72.jpg" alt="Gabriela Torres"></div>
+          <div class="profile-info">
+            <div class="profile-top">
+              <span class="profile-name">Gabriela Torres</span>
+              <span class="profile-rating">4.8 ★</span>
+              <span class="profile-age">35 años</span>
+            </div>
+            <div class="profile-desc">Mecánica de motos y scooters. Servicio a domicilio y trato amable.</div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-btn" onclick="window.location.href='vista_perfil_trabajador.html'">Ver perfil completo</button>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-avatar"><img src="https://randomuser.me/api/portraits/men/90.jpg" alt="Fernando Díaz"></div>
+          <div class="profile-info">
+            <div class="profile-top">
+              <span class="profile-name">Fernando Díaz</span>
+              <span class="profile-rating">4.7 ★</span>
+              <span class="profile-age">38 años</span>
+            </div>
+            <div class="profile-desc">Especialista en frenos y suspensión. Diagnóstico profesional y precios justos.</div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-btn" onclick="window.location.href='vista_perfil_trabajador.html'">Ver perfil completo</button>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-avatar"><img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Jorge Ramírez"></div>
+          <div class="profile-info">
+            <div class="profile-top">
+              <span class="profile-name">Jorge Ramírez</span>
+              <span class="profile-rating">4.8 ★</span>
+              <span class="profile-age">44 años</span>
+            </div>
+            <div class="profile-desc">Mecánica general y afinaciones. Experiencia y confianza para tu auto.</div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-btn" onclick="window.location.href='vista_perfil_trabajador.html'">Ver perfil completo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    // Obtener todos los botones de perfil
+    const botonesPerfil = document.querySelectorAll('.profile-btn');
+    botonesPerfil.forEach(btn => {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        // Buscar el card más cercano
+        const card = btn.closest('.profile-card');
+        // Obtener datos del perfil
+        const nombre = card.querySelector('.profile-name')?.textContent || '';
+        const edad = card.querySelector('.profile-age')?.textContent || '';
+        const rating = card.querySelector('.profile-rating')?.textContent || '';
+        const desc = card.querySelector('.profile-desc')?.textContent || '';
+        const avatar = card.querySelector('.profile-avatar img')?.src || '';
+        // Datos personalizados por trabajador
+        let perfilExtra = {};
+        if (nombre.includes('Raúl Castillo')) {
+          perfilExtra = {
+            especialidades: ['Mecánica automotriz', 'Diagnóstico rápido'],
+            experiencia: '15 años de experiencia en talleres y agencias',
+            ubicacion: 'CDMX, México',
+            contacto: { telefono: '+52 55 1111 2222', email: 'raul.castillo@paya.com' },
+            redes: [
+              { nombre: 'Facebook', url: '#', icon: '🔵' },
+              { nombre: 'Instagram', url: '#', icon: '🟣' }
+            ],
+            valoraciones: [
+              { usuario: 'Carlos M.', comentario: 'Me arregló el coche en tiempo récord.', rating: 5 },
+              { usuario: 'Elena S.', comentario: 'Muy profesional y honesto.', rating: 5 }
+            ]
+          };
+        } else if (nombre.includes('Gabriela Torres')) {
+          perfilExtra = {
+            especialidades: ['Mecánica de motos', 'Servicio a domicilio'],
+            experiencia: '8 años en reparación de motos y scooters',
+            ubicacion: 'Naucalpan, Estado de México',
+            contacto: { telefono: '+52 55 3333 4444', email: 'gabriela.torres@paya.com' },
+            redes: [
+              { nombre: 'Facebook', url: '#', icon: '🔵' },
+              { nombre: 'WhatsApp', url: '#', icon: '🟢' }
+            ],
+            valoraciones: [
+              { usuario: 'Mario L.', comentario: 'Excelente trato y servicio a domicilio.', rating: 5 },
+              { usuario: 'Sandra V.', comentario: 'Mi moto quedó como nueva.', rating: 4 }
+            ]
+          };
+        } else if (nombre.includes('Fernando Díaz')) {
+          perfilExtra = {
+            especialidades: ['Frenos', 'Suspensión', 'Diagnóstico profesional'],
+            experiencia: '10 años en talleres especializados',
+            ubicacion: 'Tlalnepantla, Estado de México',
+            contacto: { telefono: '+52 55 5555 6666', email: 'fernando.diaz@paya.com' },
+            redes: [
+              { nombre: 'Instagram', url: '#', icon: '🟣' },
+              { nombre: 'WhatsApp', url: '#', icon: '🟢' }
+            ],
+            valoraciones: [
+              { usuario: 'Rosa C.', comentario: 'Solucionó el problema de los frenos muy rápido.', rating: 5 },
+              { usuario: 'Luis F.', comentario: 'Buen precio y atención.', rating: 4 }
+            ]
+          };
+        } else if (nombre.includes('Jorge Ramírez')) {
+          perfilExtra = {
+            especialidades: ['Mecánica general', 'Afinaciones'],
+            experiencia: '20 años de experiencia',
+            ubicacion: 'Ecatepec, Estado de México',
+            contacto: { telefono: '+52 55 7777 8888', email: 'jorge.ramirez@paya.com' },
+            redes: [
+              { nombre: 'Facebook', url: '#', icon: '🔵' }
+            ],
+            valoraciones: [
+              { usuario: 'Patricia H.', comentario: 'Confío siempre en Jorge para mi auto.', rating: 5 },
+              { usuario: 'Miguel A.', comentario: 'Muy confiable y rápido.', rating: 5 }
+            ]
+          };
+        }
+        // Guardar en localStorage
+        localStorage.setItem('perfil_trabajador', JSON.stringify({nombre, edad, rating, desc, avatar, ...perfilExtra}));
+        window.location.href = 'vista_perfil_trabajador.html';
+      };
+    });
+  </script>
+</body>
+</html>

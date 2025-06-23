@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vista del Perfil (Trabajador) - Pa'ya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #007bff; --shadow: 0 4px 16px rgba(0,0,0,0.07); --radius: 1.2rem; --gray: #f8f9fa; --text: #222; --transition: 0.2s cubic-bezier(.4,0,.2,1); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Poppins', 'Montserrat', Arial, sans-serif; background: #fff; color: var(--text); min-height: 100vh; }
+    header { background: #fff; box-shadow: var(--shadow); padding: 0.5rem 0; position: sticky; top: 0; z-index: 10; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 2rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; user-select: none; display: inline-flex; align-items: center; gap: 0.4em; }
+    nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 1rem; transition: color var(--transition); position: relative; }
+    nav a:hover, nav a:focus { color: var(--primary); }
+    nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--primary); transition: width var(--transition); position: absolute; left: 0; bottom: -4px; }
+    nav a:hover::after, nav a:focus::after { width: 100%; }
+    main { padding: 2rem 0; }
+    .profiles-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .profile-card {
+      background: var(--gray);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .profile-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-top: 1.2rem;
+      margin-bottom: 0.7rem;
+      border: 3px solid var(--primary);
+      box-shadow: 0 2px 8px #007bff22;
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .profile-info {
+      padding: 0 1.2rem 1.2rem 1.2rem;
+      width: 100%;
+      text-align: left;
+    }
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.2rem;
+      flex-wrap: wrap;
+    }
+    .profile-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .profile-rating {
+      font-size: 1rem;
+      color: #f39c12;
+    }
+    .profile-age {
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .profile-desc {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 1.2rem;
+    }
+    .profile-actions {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .profile-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .profile-btn:hover, .profile-btn:focus {
+      background: #0056b3;
+      transform: translateY(-2px) scale(1.03);
+    }
+    @media (max-width: 600px) {
+      .profiles-list {
+        grid-template-columns: 1fr;
+      }
+      .profile-info {
+        padding: 0 1rem 1rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Pa'ya <span style="font-size:1.2em;">👤</span></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Proveedores</a></li>
+          <li><a href="#">Cómo Funciona</a></li>
+          <li><a href="#">Testimonios</a></li>
+          <li><a href="#">Descarga la App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="service-header">
+        <h1>Vista del perfil del trabajador</h1>
+        <a href="inicio_trabajador.html" style="color:#007bff;text-decoration:underline;font-weight:600;">&larr; Volver a perfiles</a>
+      </div>
+      <div id="perfil-trabajador" class="profile-card" style="margin:2rem auto;max-width:400px;"></div>
+      <div id="info-util" style="max-width:400px;margin:2rem auto 0 auto;"></div>
+    </div>
+  </main>
+  <script>
+    // Mostrar datos del trabajador desde localStorage
+    const perfil = JSON.parse(localStorage.getItem('perfil_trabajador'));
+    if (perfil) {
+      // Simulación de datos adicionales
+      const especialidades = perfil.especialidades || ['Servicio general'];
+      const experiencia = perfil.experiencia || '2 años de experiencia';
+      const ubicacion = perfil.ubicacion || 'CDMX, México';
+      const contacto = perfil.contacto || { telefono: '+52 55 0000 0000', email: 'trabajador@paya.com' };
+      const redes = perfil.redes || [
+        { nombre: 'Facebook', url: '#', icon: '🔵' },
+        { nombre: 'Instagram', url: '#', icon: '🟣' },
+        { nombre: 'WhatsApp', url: '#', icon: '🟢' }
+      ];
+      const valoraciones = perfil.valoraciones || [
+        { usuario: 'Ana P.', comentario: '¡Excelente servicio y muy puntual!', rating: 5 },
+        { usuario: 'Luis G.', comentario: 'Muy profesional y amable.', rating: 4 },
+        { usuario: 'María R.', comentario: 'Lo recomiendo ampliamente.', rating: 5 }
+      ];
+
+      document.getElementById('perfil-trabajador').innerHTML = `
+        <div style="display:flex;flex-wrap:wrap;gap:1.2em;justify-content:center;align-items:stretch;max-width:1100px;margin:0 auto;">
+          <div style="background:#f8f9fa;border-radius:1.2em;box-shadow:0 2px 8px #007bff22;padding:1.5em 1.2em;min-width:260px;flex:2 1 320px;display:flex;align-items:center;gap:1.2em;">
+            <div class="profile-avatar" style="min-width:90px;"><img src="${perfil.avatar}" alt="${perfil.nombre}"></div>
+            <div class="profile-info" style="padding:0;width:auto;">
+              <div class="profile-top">
+                <span class="profile-name">${perfil.nombre}</span>
+                <span class="profile-rating">${perfil.rating}</span>
+                <span class="profile-age">${perfil.edad}</span>
+              </div>
+              <div class="profile-desc">${perfil.desc}</div>
+              <div style='margin-top:1.2em;text-align:center;'><button id="btn-chat" style="background:#28a745;color:#fff;padding:0.7em 2em;font-size:1.1em;border:none;border-radius:1.2em;box-shadow:0 2px 8px #28a74522;cursor:pointer;font-weight:600;transition:background 0.2s;">💬 Chatear o Solicitar servicio</button></div>
+            </div>
+          </div>
+          <div style="background:#f8f9fa;border-radius:1.2em;box-shadow:0 2px 8px #007bff22;padding:1.5em 1.2em;min-width:220px;flex:1 1 220px;display:flex;flex-direction:column;gap:0.5em;align-items:flex-start;justify-content:center;">
+            <div><b>Especialidades:</b> <span style="color:#007bff;">${(perfil.especialidades||['Servicio general']).join(', ')}</span></div>
+            <div><b>Experiencia:</b> <span style="color:#444;">${perfil.experiencia||'2 años de experiencia'}</span></div>
+            <div><b>Ubicación:</b> <span style="color:#444;">${perfil.ubicacion||'CDMX, México'}</span></div>
+          </div>
+          <div style="background:#f8f9fa;border-radius:1.2em;box-shadow:0 2px 8px #007bff22;padding:1.5em 1.2em;min-width:220px;flex:1 1 220px;display:flex;flex-direction:column;gap:0.5em;align-items:flex-start;justify-content:center;">
+            <h3 style="color:#007bff;margin:0 0 0.5em 0;">Contacto</h3>
+            <div><b>Teléfono:</b> <a href="tel:${perfil.contacto?.telefono||'+52 55 0000 0000'}" style="color:#007bff;text-decoration:none;">${perfil.contacto?.telefono||'+52 55 0000 0000'}</a></div>
+            <div><b>Email:</b> <a href="mailto:${perfil.contacto?.email||'trabajador@paya.com'}" style="color:#007bff;text-decoration:none;">${perfil.contacto?.email||'trabajador@paya.com'}</a></div>
+            <div><b>Redes sociales:</b> <span>${(perfil.redes||[{nombre:'Facebook',url:'#',icon:'🔵'}]).map(r => `<a href="${r.url}" target="_blank" title="${r.nombre}" style="font-size:1.3em;margin-right:0.5em;">${r.icon}</a>`).join('')}</span></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:1.2em;justify-content:center;align-items:stretch;max-width:900px;margin:1.5em auto 0 auto;">
+          <div style="background:#f8f9fa;border-radius:1.2em;box-shadow:0 2px 8px #007bff22;padding:1.2em 1em;min-width:260px;flex:2 1 320px;display:flex;flex-direction:column;align-items:flex-start;">
+            <h3 style="color:#007bff;margin:0 0 0.5em 0;">Mi trabajo</h3>
+            <div style="display:flex;gap:0.5em;overflow-x:auto;padding-bottom:0.5em;">
+              <img src='https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=200&q=80' alt='Trabajo 1' style='width:90px;height:70px;object-fit:cover;border-radius:0.7em;box-shadow:0 2px 8px #007bff22;'>
+              <img src='https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=200&q=80' alt='Trabajo 2' style='width:90px;height:70px;object-fit:cover;border-radius:0.7em;box-shadow:0 2px 8px #007bff22;'>
+              <img src='https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=200&q=80' alt='Trabajo 3' style='width:90px;height:70px;object-fit:cover;border-radius:0.7em;box-shadow:0 2px 8px #007bff22;'>
+              <img src='https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=200&q=80' alt='Trabajo 4' style='width:90px;height:70px;object-fit:cover;border-radius:0.7em;box-shadow:0 2px 8px #007bff22;'>
+            </div>
+          </div>
+          <div style="background:#f8f9fa;border-radius:1.2em;box-shadow:0 2px 8px #007bff22;padding:1.2em 1em;min-width:220px;flex:1 1 220px;display:flex;flex-direction:column;gap:0.5em;align-items:flex-start;">
+            <h3 style="color:#007bff;margin:0 0 0.5em 0;">Valoraciones de clientes</h3>
+            <ul style="padding-left:1.2em;margin:0;display:flex;flex-wrap:wrap;gap:1.2em;">
+              ${(perfil.valoraciones||[]).map(v => `<li style='background:#fff;border-radius:0.8em;box-shadow:0 1px 4px #007bff11;padding:0.7em 1em;min-width:180px;max-width:260px;list-style:none;'><b>${v.usuario}:</b> <span style='color:#f39c12;'>${'★'.repeat(v.rating)}${'☆'.repeat(5-v.rating)}</span><br><span style='color:#444;'>${v.comentario}</span></li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+      // --- CHAT GLOBAL (historial y visibilidad en todas las páginas) ---
+      // Utiliza localStorage['chat_historial'] para guardar mensajes
+      function getHistorial() {
+        try {
+          return JSON.parse(localStorage.getItem('chat_historial')) || [];
+        } catch { return []; }
+      }
+      function setHistorial(historial) {
+        localStorage.setItem('chat_historial', JSON.stringify(historial));
+      }
+      function renderHistorial() {
+        const chatMensajes = document.getElementById('chat-mensajes');
+        const historial = getHistorial();
+        chatMensajes.innerHTML = '';
+        if (historial.length === 0) {
+          chatMensajes.innerHTML = '<div style="color:#888;text-align:center;">¡Puedes iniciar la conversación para acordar detalles!</div>';
+        } else {
+          historial.forEach(m => {
+            if (m.tipo === 'user') {
+              chatMensajes.innerHTML += `<div style='background:#e6f4ea;padding:0.5em 1em;border-radius:1em 1em 0.2em 1em;align-self:flex-end;max-width:80%;margin-bottom:0.2em;'>${m.texto}</div>`;
+            } else if (m.tipo === 'trabajador') {
+              chatMensajes.innerHTML += `<div style='background:#f8f9fa;padding:0.5em 1em;border-radius:1em 1em 1em 0.2em;align-self:flex-start;max-width:80%;margin-bottom:0.2em;color:#222;'><b>${perfil.nombre}:</b> ${m.texto}</div>`;
+            } else if (m.tipo === 'sistema') {
+              chatMensajes.innerHTML += `<div style='background:#f1f1f1;padding:0.5em 1em;border-radius:1em;align-self:center;max-width:90%;margin-bottom:0.2em;color:#555;text-align:center;'>${m.texto}</div>`;
+            }
+          });
+          chatMensajes.scrollTop = chatMensajes.scrollHeight;
+        }
+      }
+      // Modal de chat
+      if (!document.getElementById('chat-modal')) {
+        const chatModal = document.createElement('div');
+        chatModal.id = 'chat-modal';
+        chatModal.style = 'display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.25);align-items:center;justify-content:center;';
+        chatModal.innerHTML = `
+          <div style="background:#fff;max-width:370px;width:90vw;border-radius:1.2em;box-shadow:0 8px 32px #2222;padding:1.5em 1em 1em 1em;position:relative;display:flex;flex-direction:column;">
+            <button id="cerrar-chat" style="position:absolute;top:0.7em;right:1em;background:none;border:none;font-size:1.5em;cursor:pointer;color:#888;">&times;</button>
+            <h3 style="color:#28a745;margin:0 0 0.5em 0;">Solicitud enviada</h3>
+            <div id="chat-mensajes" style="background:#f8f9fa;border-radius:0.7em;padding:0.7em;min-height:90px;max-height:180px;overflow-y:auto;font-size:1em;margin-bottom:0.7em;display:flex;flex-direction:column;gap:0.5em;"></div>
+            <form id="form-chat" style="display:flex;gap:0.5em;">
+              <input id="input-chat" type="text" placeholder="Escribe un mensaje..." style="flex:1;padding:0.5em 1em;border-radius:1em;border:1px solid #ccc;font-size:1em;outline:none;" required />
+              <button type="submit" style="background:#007bff;color:#fff;border:none;border-radius:1em;padding:0 1.2em;font-size:1em;cursor:pointer;">Enviar</button>
+            </form>
+          </div>
+        `;
+        document.body.appendChild(chatModal);
+      }
+      // Botón flotante para abrir chat
+      if (!document.getElementById('chat-fab')) {
+        const fab = document.createElement('div');
+        fab.id = 'chat-fab';
+        fab.style = 'display:none;position:fixed;left:2vw;bottom:2vw;z-index:9998;';
+        fab.innerHTML = `
+          <button id="abrir-chat" style="background:linear-gradient(135deg,#007bff 60%,#28a745 100%);border:none;outline:none;border-radius:50%;width:60px;height:60px;box-shadow:0 4px 16px #007bff44,0 0 0 0 #28a74544;display:flex;align-items:center;justify-content:center;cursor:pointer;animation:burbuja 1.2s infinite alternate;transition:bottom 0.4s cubic-bezier(.4,0,.2,1);">
+            <span style="font-size:2em;color:#fff;transition:transform 0.2s;">&#9993;</span>
+          </button>
+          <style>
+            @keyframes burbuja {
+              0% { box-shadow:0 4px 16px #007bff44,0 0 0 0 #28a74544; transform:translateY(0); }
+              100% { box-shadow:0 8px 32px #28a74544,0 0 0 8px #007bff22; transform:translateY(-10px); }
+            }
+            #chat-fab:hover button span { transform:scale(1.15) rotate(-8deg); }
+          </style>
+        `;
+        document.body.appendChild(fab);
+      }
+      // Mostrar/ocultar FAB según chat
+      function mostrarFab() {
+        document.getElementById('chat-fab').style.display = 'block';
+      }
+      function ocultarFab() {
+        document.getElementById('chat-fab').style.display = 'none';
+      }
+      document.getElementById('btn-chat').onclick = function() {
+        document.getElementById('chat-modal').style.display = 'flex';
+        renderHistorial();
+        ocultarFab();
+      };
+      document.getElementById('cerrar-chat').onclick = function() {
+        document.getElementById('chat-modal').style.display = 'none';
+        mostrarFab();
+      };
+      document.getElementById('abrir-chat').onclick = function() {
+        document.getElementById('chat-modal').style.display = 'flex';
+        renderHistorial();
+        ocultarFab();
+      };
+      document.getElementById('form-chat').onsubmit = function(e) {
+        e.preventDefault();
+        const input = document.getElementById('input-chat');
+        const mensaje = input.value.trim();
+        if (mensaje) {
+          let historial = getHistorial();
+          historial.push({ tipo: 'user', texto: mensaje });
+          setHistorial(historial);
+          renderHistorial();
+          input.value = '';
+          setTimeout(()=>{
+            let historial = getHistorial();
+            historial.push({ tipo: 'sistema', texto: `${perfil.nombre} está escribiendo...` });
+            setHistorial(historial);
+            renderHistorial();
+            setTimeout(()=>{
+              historial = getHistorial();
+              historial.pop(); // Quitar "escribiendo"
+              historial.push({ tipo: 'trabajador', texto: '¡Gracias por tu mensaje! ¿En qué horario y lugar prefieres el servicio?' });
+              setHistorial(historial);
+              renderHistorial();
+            }, 1200);
+          }, 700);
+        }
+      };
+      // Mostrar FAB si hay historial al cargar
+      if (getHistorial().length > 0) mostrarFab();
+    } else {
+      document.getElementById('perfil-trabajador').innerHTML = '<p>No se encontró información del trabajador.</p>';
+      document.getElementById('info-util').innerHTML = '';
+    }
+  </script>
+</body>
+</html>

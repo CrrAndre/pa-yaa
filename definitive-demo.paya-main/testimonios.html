@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonios | Pa'ya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+      background: #f8f9fa;
+      color: #222;
+      min-height: 100vh;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #007bff;
+      letter-spacing: 1px;
+      user-select: none;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+    nav a:hover, nav a:focus {
+      color: #007bff;
+    }
+    .testimonials-section {
+      margin: 2.5rem 0 2rem 0;
+      text-align: center;
+    }
+    .testimonials-title {
+      font-size: 2.2rem;
+      color: #007bff;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+    .testimonial-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .testimonial-card {
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,123,255,0.07);
+      border-radius: 1.2rem;
+      padding: 1.5rem 1.2rem;
+      max-width: 320px;
+      min-width: 220px;
+      flex: 1 1 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .testimonial-quote {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .testimonial-user {
+      font-weight: 600;
+      color: #007bff;
+      font-size: 1rem;
+    }
+    @media (max-width: 700px) {
+      .testimonial-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Pa'ya</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#proveedores">Proveedores</a></li>
+          <li><a href="index.html#como-funciona">Cómo Funciona</a></li>
+          <li><a href="testimonios.html" style="color:#007bff;font-weight:700;">Testimonios</a></li>
+          <li><a href="index.html#app">Descarga la App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <section class="testimonials-section">
+        <div class="testimonials-title">Testimonios de usuarios</div>
+        <div class="testimonial-cards">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"¡El servicio fue rápido y el profesional muy amable! Sin duda volveré a usar Pa'ya."</div>
+            <div class="testimonial-user">- Laura M.</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"Encontré un electricista en minutos y resolvió mi problema el mismo día."</div>
+            <div class="testimonial-user">- Jorge R.</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"Muy fácil de usar y los proveedores son de confianza. ¡Recomendado!"</div>
+            <div class="testimonial-user">- Fernanda S.</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"Me encantó la atención y la rapidez. El app es muy intuitiva."</div>
+            <div class="testimonial-user">- Ricardo T.</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"Excelente opción para encontrar servicios a domicilio. Todo muy seguro."</div>
+            <div class="testimonial-user">- Paola V.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
